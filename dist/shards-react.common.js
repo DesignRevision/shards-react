@@ -1,5 +1,5 @@
 /*
-* Shards React v1.0.0 (https://designrevision.com/downloads/shards-react/)
+* Shards React v1.0.1 (https://designrevision.com/downloads/shards-react/)
 * Based on: Bootstrap ^4.1.3 (https://getbootstrap.com)
 * Based on: Shards ^2.1.0 (https://designrevision.com/downloads/shards/)
 * Copyright 2017-2018 DesignRevision (https://designrevision.com)
@@ -4014,7 +4014,8 @@ function (_React$Component) {
       })), React__default.createElement("label", {
         id: id,
         className: "custom-control-label",
-        "aria-hidden": "true"
+        "aria-hidden": "true",
+        onClick: this.props.onChange
       }), React__default.createElement("span", {
         className: "custom-control-description"
       }, children));
@@ -4024,6 +4025,9 @@ function (_React$Component) {
   return FormCheckbox;
 }(React__default.Component);
 
+FormCheckbox.defaultProps = {
+  onChange: function onChange() {}
+};
 FormCheckbox.propTypes = {
   /**
    * The class name.
@@ -4059,6 +4063,11 @@ FormCheckbox.propTypes = {
    * Whether it is small (toggle), or not.
    */
   small: propTypes.bool,
+
+  /**
+   * The onChange handler.
+   */
+  onChange: propTypes.func,
 
   /**
    * The inner ref.
@@ -4266,8 +4275,9 @@ function (_React$Component) {
           valid = _this$props.valid,
           invalid = _this$props.invalid,
           innerRef = _this$props.innerRef,
+          onChange = _this$props.onChange,
           _id = _this$props.id,
-          attrs = _objectWithoutProperties(_this$props, ["className", "children", "inline", "valid", "invalid", "innerRef", "id"]);
+          attrs = _objectWithoutProperties(_this$props, ["className", "children", "inline", "valid", "invalid", "innerRef", "onChange", "id"]);
 
       var labelClasses = classNames("custom-control", "custom-radio", inline && "custom-control-inline", valid && "is-valid", invalid && "is-invalid");
       var inputClasses = classNames(className, "custom-control-input", valid && "is-valid", invalid && "is-invalid");
@@ -4280,11 +4290,13 @@ function (_React$Component) {
         ref: innerRef,
         id: id,
         type: "radio",
-        className: inputClasses
+        className: inputClasses,
+        onChange: onChange
       })), React__default.createElement("label", {
         id: id,
         className: "custom-control-label",
-        "aria-hidden": "true"
+        "aria-hidden": "true",
+        onClick: onChange
       }), React__default.createElement("span", {
         className: "custom-control-description"
       }, children));
@@ -4294,6 +4306,9 @@ function (_React$Component) {
   return FormRadio;
 }(React__default.Component);
 
+FormRadio.defaultProps = {
+  onChange: function onChange() {}
+};
 FormRadio.propTypes = {
   /**
    * The class name.
