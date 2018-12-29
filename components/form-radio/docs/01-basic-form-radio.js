@@ -9,8 +9,12 @@ import { FormRadio } from "shards-react";
 export default class FormRadioExample extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedFruit: null
+    };
+
     this.changeFruit = this.changeFruit.bind(this);
-    this.state = { selectedFruit: null };
   }
 
   changeFruit(fruit) {
@@ -25,6 +29,7 @@ export default class FormRadioExample extends React.Component {
         <p className="mb-2">Select your favorite fruit:</p>
         <FormRadio
           name="fruit"
+          checked={this.state.selectedFruit === "orange"}
           onChange={() => {
             this.changeFruit("orange");
           }}
@@ -33,6 +38,7 @@ export default class FormRadioExample extends React.Component {
         </FormRadio>
         <FormRadio
           name="fruit"
+          checked={this.state.selectedFruit === "lemon"}
           onChange={() => {
             this.changeFruit("lemon");
           }}
@@ -41,6 +47,7 @@ export default class FormRadioExample extends React.Component {
         </FormRadio>
         <FormRadio
           name="fruit"
+          checked={this.state.selectedFruit === "kiwi"}
           onChange={() => {
             this.changeFruit("kiwi");
           }}

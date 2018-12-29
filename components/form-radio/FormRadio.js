@@ -26,6 +26,7 @@ class FormRadio extends React.Component {
       valid,
       invalid,
       innerRef,
+      onChange,
       id: _id,
       ...attrs
     } = this.props;
@@ -55,13 +56,18 @@ class FormRadio extends React.Component {
           id={id}
           type="radio"
           className={inputClasses}
+          onChange={onChange}
         />
-        <label id={id} className="custom-control-label" aria-hidden="true" />
+        <label id={id} className="custom-control-label" aria-hidden="true" onClick={onChange} />
         <span className="custom-control-description">{children}</span>
       </label>
     );
   }
 }
+
+FormRadio.defaultProps = {
+  onChange: () => {}
+};
 
 FormRadio.propTypes = {
   /**
