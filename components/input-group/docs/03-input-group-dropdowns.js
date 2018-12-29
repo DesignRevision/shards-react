@@ -36,7 +36,7 @@ export default class InputGroupDropdownExample extends React.Component {
           toggle={this.toggle}
         >
           <DropdownToggle caret>Dropdown</DropdownToggle>
-          <DropdownMenu>
+          <DropdownMenu right>
             <DropdownItem>Action</DropdownItem>
             <DropdownItem>Another action</DropdownItem>
             <DropdownItem>Something else here</DropdownItem>
