@@ -62,11 +62,15 @@ class FormCheckbox extends React.Component {
           type="checkbox"
           className={inputClasses}
         />
-        <label id={id} className="custom-control-label" aria-hidden="true" />
+        <label id={id} className="custom-control-label" aria-hidden="true" onClick={this.props.onChange} />
         <span className="custom-control-description">{children}</span>
       </label>
     );
   }
+}
+
+FormCheckbox.defaultProps = {
+  onChange: () => {}
 }
 
 FormCheckbox.propTypes = {
@@ -98,6 +102,10 @@ FormCheckbox.propTypes = {
    * Whether it is small (toggle), or not.
    */
   small: PropTypes.bool,
+  /**
+   * The onChange handler.
+   */
+  onChange: PropTypes.func,
   /**
    * The inner ref.
    */

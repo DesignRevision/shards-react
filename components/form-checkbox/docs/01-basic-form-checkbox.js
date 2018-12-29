@@ -33,7 +33,7 @@ export default class FormCheckboxExample extends React.Component {
           Orange
         </FormCheckbox>
         <FormCheckbox
-          checked={this.state.lemnon}
+          checked={this.state.lemon}
           onChange={e => this.handleChange(e, "lemon")}
         >
           Lemon

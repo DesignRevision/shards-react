@@ -6,10 +6,35 @@ import { FormCheckbox } from "shards-react";
  *
  * A toggle's size can be adjusted using the `small` prop.
  */
-export default function SmallToggleExample() {
-  return (
-    <FormCheckbox toggle small>
-      🚀 Enable (small) Rockets
-    </FormCheckbox>
-  );
+class SmallToggleExamples extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checked: false
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange() {
+    this.setState({
+      checked: !this.state.checked
+    });
+  }
+
+  render() {
+    return (
+      <FormCheckbox
+        toggle
+        small
+        checked={this.state.checked}
+        onChange={this.handleChange}>
+        🚀 Enable (small) Rockets
+      </FormCheckbox>
+    );
+  }
 }
+
+export default SmallToggleExamples;
+
