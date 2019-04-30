@@ -37,7 +37,7 @@ class FormCheckbox extends React.Component {
 
     const labelClasses = classNames(
       className,
-      "custom-control",
+      "custom-control d-block my-2",
       !toggle ? "custom-checkbox" : "custom-toggle",
       toggle && small && "custom-toggle-sm",
       inline && "custom-control-inline",
@@ -54,17 +54,17 @@ class FormCheckbox extends React.Component {
     const id = _id || `dr-checkbox-${shortid.generate()}`;
 
     return (
-      <label className={labelClasses}>
+      <div className={labelClasses}>
         <input
           {...attrs}
           ref={innerRef}
           id={id}
           type="checkbox"
           className={inputClasses}
+          onClick={this.props.onChange}
         />
-        <label id={id} className="custom-control-label" aria-hidden="true" onClick={this.props.onChange} />
-        <span className="custom-control-description">{children}</span>
-      </label>
+        <label htmlFor={id} className="custom-control-label" aria-hidden="true">{children}</label>
+      </div>
     );
   }
 }

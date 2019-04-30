@@ -32,7 +32,7 @@ class FormRadio extends React.Component {
     } = this.props;
 
     const labelClasses = classNames(
-      "custom-control",
+      "custom-control d-block my-2",
       "custom-radio",
       inline && "custom-control-inline",
       valid && "is-valid",
@@ -49,7 +49,7 @@ class FormRadio extends React.Component {
     const id = _id || `dr-radio-${shortid.generate()}`;
 
     return (
-      <label className={labelClasses}>
+      <div className={labelClasses}>
         <input
           {...attrs}
           ref={innerRef}
@@ -58,9 +58,8 @@ class FormRadio extends React.Component {
           className={inputClasses}
           onChange={onChange}
         />
-        <label id={id} className="custom-control-label" aria-hidden="true" onClick={onChange} />
-        <span className="custom-control-description">{children}</span>
-      </label>
+        <label htmlFor={id} className="custom-control-label" aria-hidden="true">{children}</label>
+      </div>
     );
   }
 }
