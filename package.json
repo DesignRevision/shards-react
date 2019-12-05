@@ -38,22 +38,29 @@
       "path": "./dist/*.js"
     }
   ],
+  "types": "dist/shards-react.d.ts",
   "devDependencies": {
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.9.11",
+    "@wessberg/rollup-plugin-ts": "^1.1.78",
     "bundlesize": "^0.17.0",
     "eslint": "^5.9.0",
     "eslint-plugin-react": "^7.11.1",
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "prop-types": "^15.6.2",
     "rimraf": "^2.6.2",
     "rollup": "^0.67.3",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-babel-minify": "^6.2.0",
     "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-dts": "^1.1.12",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-postcss": "^1.6.3"
+    "rollup-plugin-postcss": "^1.6.3",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.2"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",

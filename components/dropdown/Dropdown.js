@@ -155,6 +155,10 @@ class Dropdown extends React.Component {
 
 Dropdown.propTypes = {
   /**
+   * The class name.
+   */
+  className: PropTypes.string,
+  /**
    * Whether it is open, or not.
    */
   open: PropTypes.bool,

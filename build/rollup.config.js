@@ -6,6 +6,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import babel from 'rollup-plugin-babel'
 import minify from 'rollup-plugin-babel-minify'
 import postcss from 'rollup-plugin-postcss'
+import dts from "rollup-plugin-dts"
 import { name, version, dependencies, peerDependencies } from '../package.json'
 
 const PATHS = {
@@ -124,9 +125,17 @@ const MinifiedUMDConfig = createBaseConfig(function(config) {
   })
 })
 
+const TypescriptTypesConfig = {
+  input: path.resolve(__dirname, '..', 'types', 'shards-react.d.ts'),
+  output: [{ file: "dist/shards-react.d.ts", format: "es" }],
+  plugins: [dts()],
+  external: ['react']
+}
+
 module.exports = [
+  TypescriptTypesConfig,
   CommonJSConfig,
   ESModulesConfig,
   UMDConfig,
-  MinifiedUMDConfig
+  MinifiedUMDConfig,
 ]
