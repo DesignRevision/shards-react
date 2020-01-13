@@ -1,6 +1,6 @@
 {
   "name": "shards-react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A free, beautiful and modern React UI kit powered by Bootstrap 4 and the Shards UI kit.",
   "main": "dist/shards-react.common.js",
   "jsnext:main": "dist/shards-react.es.js",

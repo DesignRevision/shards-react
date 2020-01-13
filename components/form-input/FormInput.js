@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import { INPUT_TYPES } from "../constants";
+import { INPUT_TYPES, AUTOCOMPLETE_TYPES } from "../constants";
 
 /**
  * The form input allows you to create various text style inputs such as `text`, `password`, `email`, `number`, `url`, `search` and more.
@@ -35,6 +35,7 @@ class FormInput extends React.Component {
     const {
       className,
       plaintext,
+      autoComplete,
       size,
       invalid,
       valid,
@@ -51,7 +52,7 @@ class FormInput extends React.Component {
       invalid && "is-invalid"
     );
 
-    return <input {...attrs} ref={innerRef} className={classes} />;
+    return <input {...attrs} ref={innerRef} className={classes} autoComplete={autoComplete} />;
   }
 }
 
@@ -76,6 +77,10 @@ FormInput.propTypes = {
    * Whether it is plaintext, or not.
    */
   plaintext: PropTypes.bool,
+  /**
+   * Whether it is plaintext, or not.
+   */
+  autoComplete: PropTypes.oneOf(AUTOCOMPLETE_TYPES),
   /**
    * The input's size.
    */
