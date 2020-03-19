@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export const DropdownContext = React.createContext({
-  toggle: function() {},
+  toggle: function () {
+  },
   open: false,
-  direction: "down",
+  direction: 'down',
   nav: false
 });

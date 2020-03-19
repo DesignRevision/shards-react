@@ -1,10 +1,5 @@
-import React from "react";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "shards-react";
+import React from 'react';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'shards-react';
 
 /**
  * ## Sizing
@@ -25,14 +20,14 @@ export default class DropdownSizeExample extends React.Component {
   toggle(nr) {
     this.setState(prevState => {
       const newState = {};
-      newState[`dropdown${nr}`] = !prevState[`dropdown${nr}`];
-      return { ...prevState, ...newState };
+      newState[ `dropdown${nr}` ] = !prevState[ `dropdown${nr}` ];
+      return {...prevState, ...newState};
     });
   }
 
   render() {
     return (
-      <div style={{ display: "flex" }}>
+      <div style={{display: 'flex'}}>
         <Dropdown
           open={this.state.dropdown1}
           toggle={() => this.toggle(1)}

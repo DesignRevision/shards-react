@@ -1,5 +1,5 @@
-import React from "react";
-import { Form, FormInput, FormGroup } from "shards-react";
+import React from 'react';
+import { Form, FormGroup, FormInput } from 'shards-react';
 
 /**
  * ## Basic Example
@@ -11,11 +11,11 @@ export default function FormExample() {
     <Form>
       <FormGroup>
         <label htmlFor="#username">Username</label>
-        <FormInput id="#username" placeholder="Username" />
+        <FormInput id="#username" placeholder="Username"/>
       </FormGroup>
       <FormGroup>
         <label htmlFor="#password">Password</label>
-        <FormInput type="password" id="#password" placeholder="Password" />
+        <FormInput type="password" id="#password" placeholder="Password"/>
       </FormGroup>
     </Form>
   );

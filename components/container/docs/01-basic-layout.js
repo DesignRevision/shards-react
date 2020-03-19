@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col } from "shards-react";
+import React from 'react';
+import { Col, Container, Row } from 'shards-react';
 
 /**
  * ## Basic Example

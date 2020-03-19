@@ -1,6 +1,6 @@
-import React from "react";
-import Button from "shards-react/button";
-import Collapse from "shards-react/collapse";
+import React from 'react';
+import Button from 'shards-react/button';
+import Collapse from 'shards-react/collapse';
 
 /**
  * ## Basic Example
@@ -9,11 +9,11 @@ export default class BasicCollapseExample extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
-    this.state = { collapse: false };
+    this.state = {collapse: false};
   }
 
   toggle() {
-    this.setState({ collapse: !this.state.collapse });
+    this.setState({collapse: !this.state.collapse});
   }
 
   render() {

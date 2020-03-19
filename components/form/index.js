@@ -1,4 +1,2 @@
-import Form from "./Form";
-import FormFeedback from "./FormFeedback";
-
-export { Form, FormFeedback };
+export * from './Form';
+export * from './FormFeedback';

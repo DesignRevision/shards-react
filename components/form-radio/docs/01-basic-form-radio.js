@@ -1,5 +1,5 @@
-import React from "react";
-import { FormRadio } from "shards-react";
+import React from 'react';
+import { FormRadio } from 'shards-react';
 
 /**
  * ## Basic Demo
@@ -29,34 +29,34 @@ export default class FormRadioExample extends React.Component {
         <p className="mb-2">Select your favorite fruit:</p>
         <FormRadio
           name="fruit"
-          checked={this.state.selectedFruit === "orange"}
+          checked={this.state.selectedFruit === 'orange'}
           onChange={() => {
-            this.changeFruit("orange");
+            this.changeFruit('orange');
           }}
         >
           Orange
         </FormRadio>
         <FormRadio
           name="fruit"
-          checked={this.state.selectedFruit === "lemon"}
+          checked={this.state.selectedFruit === 'lemon'}
           onChange={() => {
-            this.changeFruit("lemon");
+            this.changeFruit('lemon');
           }}
         >
           Lemon
         </FormRadio>
         <FormRadio
           name="fruit"
-          checked={this.state.selectedFruit === "kiwi"}
+          checked={this.state.selectedFruit === 'kiwi'}
           onChange={() => {
-            this.changeFruit("kiwi");
+            this.changeFruit('kiwi');
           }}
         >
           Kiwi
         </FormRadio>
         <span>
-          <strong>Selected fruit:</strong>{" "}
-          <span>{this.state.selectedFruit || "none"}</span>
+          <strong>Selected fruit:</strong>{' '}
+          <span>{this.state.selectedFruit || 'none'}</span>
         </span>
       </div>
     );

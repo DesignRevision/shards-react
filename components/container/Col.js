@@ -1,63 +1,64 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import { BREAKPOINTS } from "../constants";
-import { CustomPropTypes } from "../utils";
+import { BREAKPOINTS } from '../constants';
+import { CustomPropTypes } from '../utils';
 
-const makeColumnClass = function(isXs, breakpoint, colSize) {
-  if (colSize === true || colSize === "") {
-    return isXs ? "col" : `col-${breakpoint}`;
-  } else if (colSize === "auto") {
-    return isXs ? "col-auto" : `col-${breakpoint}-auto`;
+const makeColumnClass = function (isXs, breakpoint, colSize) {
+  if (colSize === true || colSize === '') {
+    return isXs ? 'col' : `col-${breakpoint}`;
+  } else if (colSize === 'auto') {
+    return isXs ? 'col-auto' : `col-${breakpoint}-auto`;
   }
 
   return isXs ? `col-${colSize}` : `col-${breakpoint}-${colSize}`;
 };
 
-const Col = props => {
-  const { className, breakpoints, tag: Tag, ...attrs } = props;
-
+export const Col = ({
+  className,
+  breakpoints,
+  tag: Tag,
+  ...attrs
+}) => {
   const columnClasses = [];
 
   breakpoints.forEach((breakpoint, idx) => {
-    let columnProp = props[breakpoint];
+    let columnProp = props[ breakpoint ];
 
-    delete attrs[breakpoint];
+    delete attrs[ breakpoint ];
 
-    if (!columnProp && columnProp !== "") {
+    if (!columnProp && columnProp !== '') {
       return;
     }
 
     const isXs = idx === 0;
 
-    if (typeof columnProp !== "object") {
+    if (typeof columnProp !== 'object') {
       const colClass = makeColumnClass(isXs, breakpoint, columnProp);
       columnClasses.push(colClass);
       return;
     }
 
-    const colSizeInterfix = isXs ? "-" : `-${breakpoint}-`;
+    const colSizeInterfix = isXs ? '-' : `-${breakpoint}-`;
     const colClass = makeColumnClass(isXs, breakpoint, columnProp.size);
 
     columnClasses.push(
       classNames({
-        [colClass]: columnProp.size || columnProp.size === "",
-        [`order${colSizeInterfix}${columnProp.order}`]:
-          columnProp.order || columnProp.order === 0,
-        [`offset${colSizeInterfix}${columnProp.offset}`]:
-          columnProp.offset || columnProp.offset === 0
+        [ colClass ]: columnProp.size || columnProp.size === '',
+        [ `order${colSizeInterfix}${columnProp.order}` ]:
+        columnProp.order || columnProp.order === 0,
+        [ `offset${colSizeInterfix}${columnProp.offset}` ]:
+        columnProp.offset || columnProp.offset === 0
       })
     );
   });
 
   if (!columnClasses.length) {
-    columnClasses.push("col");
+    columnClasses.push('col');
   }
 
-  const classes = classNames(className, columnClasses);
-
-  return <Tag {...attrs} className={classes} />;
+  return <Tag {...attrs} className={classNames(className, columnClasses)}/>;
 };
 
 Col.propTypes = {
@@ -92,12 +93,10 @@ Col.propTypes = {
   /**
    * The component tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 Col.defaultProps = {
-  tag: "div",
+  tag: 'div',
   breakpoints: BREAKPOINTS
 };
-
-export default Col;

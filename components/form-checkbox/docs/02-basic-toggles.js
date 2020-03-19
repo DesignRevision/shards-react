@@ -1,5 +1,5 @@
-import React from "react";
-import { FormCheckbox } from "shards-react";
+import React from 'react';
+import { FormCheckbox } from 'shards-react';
 
 /**
  * ## Basic Toggles

@@ -1,5 +1,5 @@
-import React from "react";
-import { FormCheckbox } from "shards-react";
+import React from 'react';
+import { FormCheckbox } from 'shards-react';
 
 /**
  * ## Inline Display
@@ -21,8 +21,8 @@ export default class InlineCheckboxes extends React.Component {
 
   handleChange(e, fruit) {
     const newState = {};
-    newState[fruit] = !this.state[fruit];
-    this.setState({ ...this.state, ...newState });
+    newState[ fruit ] = !this.state[ fruit ];
+    this.setState({...this.state, ...newState});
   }
 
   render() {
@@ -32,21 +32,21 @@ export default class InlineCheckboxes extends React.Component {
         <FormCheckbox
           inline
           checked={this.state.basketball}
-          onChange={e => this.handleChange(e, "basketball")}
+          onChange={e => this.handleChange(e, 'basketball')}
         >
           Basketball
         </FormCheckbox>
         <FormCheckbox
           inline
           checked={this.state.football}
-          onChange={e => this.handleChange(e, "football")}
+          onChange={e => this.handleChange(e, 'football')}
         >
           Football
         </FormCheckbox>
         <FormCheckbox
           inline
           checked={this.state.tennis}
-          onChange={e => this.handleChange(e, "tennis")}
+          onChange={e => this.handleChange(e, 'tennis')}
         >
           Tennis
         </FormCheckbox>

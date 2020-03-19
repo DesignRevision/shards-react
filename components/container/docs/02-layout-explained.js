@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col } from "shards-react";
+import React from 'react';
+import { Col, Container, Row } from 'shards-react';
 
 /**
  * ## Containers
@@ -40,7 +40,7 @@ export default class Example extends React.Component {
         </Row>
 
         <Row>
-          <Col sm={{ size: 8, order: 2, offset: 2 }}>
+          <Col sm={{size: 8, order: 2, offset: 2}}>
             .col-sm-8 .order-sm-2 .offset-sm-2
           </Col>
         </Row>

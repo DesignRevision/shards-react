@@ -1,18 +1,23 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const FormFeedback = props => {
-  const { className, valid, tooltip, tag: Tag, ...attrs } = props;
-  const validMode = tooltip ? "tooltip" : "feedback";
-
-  const classes = classNames(
-    className,
-    valid ? `valid-${validMode}` : `invalid-${validMode}`
-  );
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const FormFeedback = ({
+  className,
+  valid,
+  tooltip,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag
+    {...attrs}
+    className={
+      classNames(
+        className,
+        `${ valid ? '' : 'in' }valid-${ tooltip ? 'tooltip' : 'feedback' }`
+      )
+    }/>
+);
 
 FormFeedback.propTypes = {
   /**
@@ -38,8 +43,6 @@ FormFeedback.propTypes = {
 };
 
 FormFeedback.defaultProps = {
-  tag: "div",
+  tag: 'div',
   valid: undefined
 };
-
-export default FormFeedback;

@@ -1,5 +1,5 @@
-import React from "react";
-import { DatePicker } from "shards-react";
+import React from 'react';
+import { DatePicker } from 'shards-react';
 
 /**
  * ## Basic Example

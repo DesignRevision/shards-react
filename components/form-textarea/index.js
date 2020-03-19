@@ -1,3 +1,1 @@
-import FormTextarea from "./FormTextarea";
-
-export default FormTextarea;
+export * from './FormTextarea';

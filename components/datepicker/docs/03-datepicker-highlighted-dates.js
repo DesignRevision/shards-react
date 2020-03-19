@@ -1,5 +1,5 @@
-import React from "react";
-import { DatePicker } from "shards-react";
+import React from 'react';
+import { DatePicker } from 'shards-react';
 
 /**
  * ## Highlighted Dates
@@ -36,7 +36,7 @@ export default class DatepickerHighlightedDatesExample extends React.Component {
           size="sm"
           selected={this.state.startDate}
           onChange={this.handleOnChange}
-          highlightDates={[today, yesterday, twoDaysAgo]}
+          highlightDates={[ today, yesterday, twoDaysAgo ]}
           dropdownMode="select"
         />
       </div>

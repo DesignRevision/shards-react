@@ -1,22 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Form groups allow you to easily add structure to your forms.
  */
-const FormGroup = props => {
-  const { className, row, disabled, check, inline, tag: Tag, ...attrs } = props;
-  const classes = classNames(
-    className,
-    row && "row",
-    check ? "form-check" : "form-group",
-    check && inline && "form-check-inline",
-    check && disabled && "disabled"
-  );
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const FormGroup = ({
+  className,
+  row,
+  disabled,
+  check,
+  inline,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={
+    classNames(
+      className,
+      row && 'row',
+      check ? 'form-check' : 'form-group',
+      check && inline && 'form-check-inline',
+      check && disabled && 'disabled'
+    )
+  }/>
+);
 
 FormGroup.propTypes = {
   /**
@@ -50,7 +57,5 @@ FormGroup.propTypes = {
 };
 
 FormGroup.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
-
-export default FormGroup;

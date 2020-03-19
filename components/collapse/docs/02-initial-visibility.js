@@ -1,6 +1,6 @@
-import React from "react";
-import Button from "shards-react/button";
-import Collapse from "shards-react/collapse";
+import React from 'react';
+import Button from 'shards-react/button';
+import Collapse from 'shards-react/collapse';
 
 /**
  * ## Initial Visibility
@@ -11,11 +11,11 @@ export default class CollapseInitialVisibilityExample extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
-    this.state = { collapse: true };
+    this.state = {collapse: true};
   }
 
   toggle() {
-    this.setState({ collapse: !this.state.collapse });
+    this.setState({collapse: !this.state.collapse});
   }
 
   render() {

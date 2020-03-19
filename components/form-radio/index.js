@@ -1,3 +1,1 @@
-import DFormRadio from "./FormRadio";
-
-export default DFormRadio;
+export * from "./FormRadio";

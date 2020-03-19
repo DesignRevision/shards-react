@@ -1,5 +1,5 @@
-import React from "react";
-import { DatePicker } from "shards-react";
+import React from 'react';
+import { DatePicker } from 'shards-react';
 
 /**
  * ## Excluded Dates
@@ -35,7 +35,7 @@ export default class DatepickerExcludedDatesExample extends React.Component {
           size="sm"
           selected={this.state.startDate}
           onChange={this.handleOnChange}
-          excludeDates={[today, yesterday]}
+          excludeDates={[ today, yesterday ]}
           dropdownMode="select"
         />
       </div>

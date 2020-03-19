@@ -1,77 +1,65 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import shortid from "shortid";
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import shortid from 'shortid';
 
 /**
  * The `FormCheckbox` component is a wrapper over Bootstrap's [custom checkbox component](https://getbootstrap.com/docs/4.1/components/forms/#checkboxes-and-radios-1).
  */
-class FormCheckbox extends React.Component {
-  constructor(props) {
-    super(props);
+export const FormCheckbox = ({
+  className,
+  children,
+  inline,
+  valid,
+  invalid,
+  innerRef,
+  toggle,
+  small,
+  id,
+  ...attrs
+}) => {
+  const ref = useRef(innerRef);
 
-    this.getRef = this.getRef.bind(this);
-  }
-
-  getRef(ref) {
-    if (this.props.innerRef) {
-      this.props.innerRef(ref);
-    }
-
-    this.ref = ref;
-  }
-
-  render() {
-    const {
-      className,
-      children,
-      inline,
-      valid,
-      invalid,
-      innerRef,
-      toggle,
-      small,
-      id: _id,
-      ...attrs
-    } = this.props;
-
-    const labelClasses = classNames(
-      className,
-      "custom-control",
-      !toggle ? "custom-checkbox" : "custom-toggle",
-      toggle && small && "custom-toggle-sm",
-      inline && "custom-control-inline",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    );
-
-    const inputClasses = classNames(
-      "custom-control-input",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    );
-
-    const id = _id || `dr-checkbox-${shortid.generate()}`;
-
-    return (
-      <label className={labelClasses}>
-        <input
-          {...attrs}
-          ref={innerRef}
-          id={id}
-          type="checkbox"
-          className={inputClasses}
-        />
-        <label id={id} className="custom-control-label" aria-hidden="true" onClick={this.props.onChange} />
-        <span className="custom-control-description">{children}</span>
-      </label>
-    );
-  }
-}
+  return (
+    <label className={
+      classNames(
+        className,
+        'custom-control',
+        !toggle ? 'custom-checkbox' : 'custom-toggle',
+        toggle && small && 'custom-toggle-sm',
+        inline && 'custom-control-inline',
+        valid && 'is-valid',
+        invalid && 'is-invalid'
+      )
+    } ref={ref}>
+      <input
+        {...attrs}
+        ref={innerRef}
+        id={id || `dr-checkbox-${shortid.generate()}`}
+        type="checkbox"
+        className={
+          classNames(
+            'custom-control-input',
+            valid && 'is-valid',
+            invalid && 'is-invalid'
+          )
+        }
+      />
+      <label
+        id={id || `dr-checkbox-${shortid.generate()}`}
+        className="custom-control-label"
+        aria-hidden="true"
+        onClick={attrs.onChange}
+      />
+      <span className="custom-control-description">{children}</span>
+    </label>
+  );
+};
 
 FormCheckbox.defaultProps = {
-  onChange: () => {}
-}
+  onChange: () => {
+  }
+};
 
 FormCheckbox.propTypes = {
   /**
@@ -86,6 +74,10 @@ FormCheckbox.propTypes = {
    * Whether it is inline, or not.
    */
   inline: PropTypes.bool,
+  /**
+   * The id.
+   */
+  id: PropTypes.string,
   /**
    * Whether it is valid, or not.
    */

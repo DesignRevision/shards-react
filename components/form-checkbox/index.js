@@ -1,3 +1,1 @@
-import FormCheckbox from "./FormCheckbox";
-
-export default FormCheckbox;
+export * from './FormCheckbox';

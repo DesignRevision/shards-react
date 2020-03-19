@@ -2,23 +2,21 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
 
-const Row = (props) => {
-  const {
-    noGutters,
-    form,
-    className,
-    tag: Tag,
-    ...attrs
-  } = props
-
-  const classes = classNames(
-    className,
-    noGutters ? 'no-gutters' : null,
-    form ? 'form-row' : 'row'
-  )
-
-  return (<Tag {...attrs} className={classes} />)
-}
+export const Row = ({
+  noGutters,
+  form,
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={
+    classNames(
+      className,
+      noGutters ? 'no-gutters' : null,
+      form ? 'form-row' : 'row'
+    )
+  } />
+);
 
 Row.propTypes = {
   /**
@@ -40,10 +38,8 @@ Row.propTypes = {
     PropTypes.func,
     PropTypes.string
   ])
-}
+};
 
 Row.defaultProps = {
   tag: 'div'
-}
-
-export default Row
+};

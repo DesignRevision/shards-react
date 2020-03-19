@@ -1,5 +1,5 @@
-import React from "react";
-import { FormSelect } from "shards-react";
+import React from 'react';
+import { FormSelect } from 'shards-react';
 
 /**
  * ## Sizing

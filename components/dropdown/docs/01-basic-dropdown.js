@@ -1,10 +1,5 @@
-import React from "react";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "shards-react";
+import React from 'react';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'shards-react';
 
 /**
  * ## Basic Example
@@ -15,12 +10,12 @@ export default class DropdownExample extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
-    this.state = { open: false };
+    this.state = {open: false};
   }
 
   toggle() {
     this.setState(prevState => {
-      return { open: !prevState.open };
+      return {open: !prevState.open};
     });
   }
 

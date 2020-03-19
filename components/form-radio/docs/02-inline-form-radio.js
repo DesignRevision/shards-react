@@ -1,5 +1,5 @@
-import React from "react";
-import { FormRadio } from "shards-react";
+import React from 'react';
+import { FormRadio } from 'shards-react';
 
 /**
  * ## Inline Display
@@ -31,9 +31,9 @@ export default class FormRadioExample extends React.Component {
           <FormRadio
             inline
             name="sport"
-            checked={this.state.selectedSport === "basketball"}
+            checked={this.state.selectedSport === 'basketball'}
             onChange={() => {
-              this.changeSport("basketball");
+              this.changeSport('basketball');
             }}
           >
             Basketball
@@ -41,9 +41,9 @@ export default class FormRadioExample extends React.Component {
           <FormRadio
             inline
             name="sport"
-            checked={this.state.selectedSport === "football"}
+            checked={this.state.selectedSport === 'football'}
             onChange={() => {
-              this.changeSport("football");
+              this.changeSport('football');
             }}
           >
             Football
@@ -51,17 +51,17 @@ export default class FormRadioExample extends React.Component {
           <FormRadio
             inline
             name="sport"
-            checked={this.state.selectedSport === "tennis"}
+            checked={this.state.selectedSport === 'tennis'}
             onChange={() => {
-              this.changeSport("tennis");
+              this.changeSport('tennis');
             }}
           >
             Tennis
           </FormRadio>
         </div>
         <span>
-          <strong>Selected sport:</strong>{" "}
-          <span>{this.state.selectedSport || "none"}</span>
+          <strong>Selected sport:</strong>{' '}
+          <span>{this.state.selectedSport || 'none'}</span>
         </span>
       </div>
     );
