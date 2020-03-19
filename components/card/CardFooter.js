@@ -1,19 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardFooter = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "card-footer");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const CardFooter = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'card-footer')}/>
+);
 
 CardFooter.propTypes = {
   /**
    * The component tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
   /**
    * The class name.
    */
@@ -21,7 +22,5 @@ CardFooter.propTypes = {
 };
 
 CardFooter.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
-
-export default CardFooter;

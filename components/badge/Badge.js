@@ -1,24 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Badges are really great for labels and count values.
  */
-const Badge = props => {
-  let { tag: Tag, className, theme, pill, outline, ...attrs } = props;
+export const Badge = ({
+  tag: Tag,
+  className,
+  theme,
+  pill,
+  outline,
+  ...attrs
+}) => {
+  Tag = attrs.href && Tag === 'span' ? 'a' : Tag;
 
-  const classes = classNames(
-    className,
-    "badge",
-    theme && !outline && `badge-${theme}`,
-    outline && `badge-outline-${theme}`,
-    pill && "badge-pill"
-  );
-
-  Tag = attrs.href && Tag === "span" ? "a" : Tag;
-
-  return <Tag {...attrs} className={classes} />;
+  return <Tag {...attrs} className={
+    classNames(
+      className,
+      'badge',
+      theme && !outline && `badge-${theme}`,
+      outline && `badge-outline-${theme}`,
+      pill && 'badge-pill'
+    )
+  }/>;
 };
 
 Badge.propTypes = {
@@ -45,14 +50,12 @@ Badge.propTypes = {
   /**
    * The component tag.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 Badge.defaultProps = {
-  theme: "primary",
+  theme: 'primary',
   pill: false,
   outline: false,
-  tag: "span"
+  tag: 'span'
 };
-
-export default Badge;

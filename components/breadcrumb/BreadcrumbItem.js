@@ -1,20 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const BreadcrumbItem = props => {
-  const { className, active, tag: Tag, ...attrs } = props;
-
-  const classes = classNames(className, active && "active", "breadcrumb-item");
-
-  return (
-    <Tag
-      {...attrs}
-      className={classes}
-      aria-current={active ? "page" : undefined}
-    />
-  );
-};
+export const BreadcrumbItem = ({
+   className,
+   active,
+   tag: Tag,
+   ...attrs
+}) => (
+  <Tag
+    {...attrs}
+    className={classNames(className, active && 'active', 'breadcrumb-item')}
+    aria-current={active ? 'page' : undefined}
+  />
+);
 
 BreadcrumbItem.propTypes = {
   /**
@@ -28,11 +27,9 @@ BreadcrumbItem.propTypes = {
   /**
    * The component tag.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 BreadcrumbItem.defaultProps = {
-  tag: "li"
+  tag: 'li'
 };
-
-export default BreadcrumbItem;

@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, ButtonGroup } from "shards-react";
+import React from 'react';
+import { Button, ButtonGroup } from 'shards-react';
 
 /**
  * ## Button Group Size

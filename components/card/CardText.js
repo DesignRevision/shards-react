@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardText = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "card-text");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const CardText = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'card-text')}/>
+);
 
 CardText.propTypes = {
   /**
@@ -17,11 +18,9 @@ CardText.propTypes = {
   /**
    * The tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 CardText.defaultProps = {
-  tag: "p"
+  tag: 'p'
 };
-
-export default CardText;

@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col, Card, CardBody, CardImg } from "shards-react";
+import React from 'react';
+import { Card, CardBody, CardImg, Col, Container, Row } from 'shards-react';
 
 /**
  * ## Card Image
@@ -12,7 +12,7 @@ export default function CardBodyExample() {
       <Row>
         <Col>
           <Card>
-            <CardImg top src="https://place-hold.it/300x200" />
+            <CardImg top src="https://place-hold.it/300x200"/>
             <CardBody>
               <p>This is the body of the card.</p>
             </CardBody>
@@ -24,7 +24,7 @@ export default function CardBodyExample() {
             <CardBody>
               <p>This is the body of the card.</p>
             </CardBody>
-            <CardImg bottom src="https://place-hold.it/300x200" />
+            <CardImg bottom src="https://place-hold.it/300x200"/>
           </Card>
         </Col>
       </Row>

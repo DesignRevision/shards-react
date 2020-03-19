@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardHeader = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "card-header");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const CardHeader = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'card-header')}/>
+);
 
 CardHeader.propTypes = {
   /**
@@ -17,11 +18,9 @@ CardHeader.propTypes = {
   /**
    * The component tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 CardHeader.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
-
-export default CardHeader;

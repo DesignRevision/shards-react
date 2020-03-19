@@ -1,17 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardBody = props => {
-  const { className, tag: Tag, children, ...attrs } = props;
-  const classes = classNames(className, "card-body");
-
-  return (
-    <Tag {...attrs} className={classes}>
-      {children}
-    </Tag>
-  );
-};
+export const CardBody = ({
+  className,
+  tag: Tag,
+  children,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'card-body')}>
+    {children}
+  </Tag>
+);
 
 CardBody.propTypes = {
   /**
@@ -28,11 +28,9 @@ CardBody.propTypes = {
   /**
    * The component tag.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 CardBody.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
-
-export default CardBody;

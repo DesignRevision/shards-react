@@ -1,13 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardLink = props => {
-  const { className, tag: Tag, innerRef, ...attrs } = props;
-  const classes = classNames(className, "card-link");
-
-  return <Tag {...attrs} ref={innerRef} className={classes} />;
-};
+export const CardLink = ({
+  className,
+  innerRef,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} ref={innerRef} className={classNames(className, 'card-link')}/>
+);
 
 CardLink.propTypes = {
   /**
@@ -17,7 +19,7 @@ CardLink.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
   /**
    * The inner ref.
    */
@@ -29,7 +31,5 @@ CardLink.propTypes = {
 };
 
 CardLink.defaultProps = {
-  tag: "a"
+  tag: 'a'
 };
-
-export default CardLink;

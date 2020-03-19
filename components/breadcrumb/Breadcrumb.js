@@ -1,31 +1,23 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * The breadcrumb component is great for indicating the current page's location within a navigational hierarchy.
  */
-const Breadcrumb = props => {
-  const {
-    className,
-    listClassName,
-    children,
-    tag: Tag,
-    listTag: ListTag,
-    "aria-label": label,
-    ...attrs
-  } = props;
-
-  const classes = classNames(className);
-
-  const listClasses = classNames("breadcrumb", listClassName);
-
-  return (
-    <Tag {...attrs} className={classes} aria-label={label}>
-      <ListTag className={listClasses}>{children}</ListTag>
-    </Tag>
-  );
-};
+export const Breadcrumb = ({
+   className,
+   listClassName,
+   children,
+   tag: Tag,
+   listTag: ListTag,
+   'aria-label': label,
+   ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className)} aria-label={label}>
+    <ListTag className={classNames('breadcrumb', listClassName)}>{children}</ListTag>
+  </Tag>
+);
 
 Breadcrumb.propTypes = {
   /**
@@ -39,7 +31,7 @@ Breadcrumb.propTypes = {
   /**
    * The aria label value.
    */
-  "aria-label": PropTypes.string,
+  'aria-label': PropTypes.string,
   /**
    * The children nodes.
    */
@@ -47,17 +39,15 @@ Breadcrumb.propTypes = {
   /**
    * The component tag name.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
   /**
    * The breadcrumb list tag.
    */
-  listTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  listTag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 Breadcrumb.defaultProps = {
-  "aria-label": "breadcrumb",
-  tag: "nav",
-  listTag: "ol"
+  'aria-label': 'breadcrumb',
+  tag: 'nav',
+  listTag: 'ol'
 };
-
-export default Breadcrumb;

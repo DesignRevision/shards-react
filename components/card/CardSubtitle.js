@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardSubtitle = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "card-subtitle", "text-muted");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const CardSubtitle = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'card-subtitle', 'text-muted')}/>
+);
 
 CardSubtitle.propTypes = {
   /**
@@ -17,11 +18,9 @@ CardSubtitle.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 CardSubtitle.defaultProps = {
-  tag: "h6"
+  tag: 'h6'
 };
-
-export default CardSubtitle;

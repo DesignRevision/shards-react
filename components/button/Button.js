@@ -1,70 +1,52 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Buttons are Bootstrap's core component for triggering various actions. In Shards, they're very flxible, support multiple sizes, styles, states and many more.
  */
-class Button extends React.Component {
-  constructor(props) {
-    super(props);
+export const Button = ({
+  className,
+  theme,
+  size,
+  pill,
+  outline,
+  squared,
+  active,
+  disabled,
+  innerRef,
+  tag,
+  block,
+  ...attrs
+}) => {
+  const classes = classNames(
+    className,
+    'btn',
+    theme && `btn-${outline ? 'outline-' : ''}${theme}`,
+    size && `btn-${size}`,
+    pill && 'btn-pill',
+    squared && 'btn-squared',
+    block && 'btn-block',
+    active && 'active'
+  );
 
-    this.onClick = this.onClick.bind(this);
-  }
+  const Tag = attrs.href && tag === 'button' ? 'a' : tag;
 
-  onClick(e) {
-    if (this.props.disabled) {
-      e.preventDefault();
-      return;
-    }
-
-    if (this.props.onClick) {
-      this.props.onClick(e);
-    }
-  }
-
-  render() {
-    let {
-      className,
-      theme,
-      size,
-      pill,
-      outline,
-      squared,
-      active,
-      disabled,
-      innerRef,
-      tag: Tag,
-      block,
-      ...attrs
-    } = this.props;
-
-    const classes = classNames(
-      className,
-      "btn",
-      theme && `btn-${outline ? "outline-" : ""}${theme}`,
-      size && `btn-${size}`,
-      pill && "btn-pill",
-      squared && "btn-squared",
-      block && "btn-block",
-      active && "active"
-    );
-
-    Tag = attrs.href && Tag === "button" ? "a" : Tag;
-    const tagType = Tag === "button" && attrs.onClick ? "button" : undefined;
-
-    return (
-      <Tag
-        ref={innerRef}
-        type={tagType}
-        {...attrs}
-        className={classes}
-        disabled={disabled}
-        onClick={this.onClick}
-      />
-    );
-  }
-}
+  return (
+    <Tag
+      ref={innerRef}
+      type={Tag === 'button' && attrs.onClick ? 'button' : undefined}
+      {...attrs}
+      className={classes}
+      disabled={disabled}
+      onClick={e => {
+        disabled ?
+          e.preventDefault() :
+          attrs.onClick(e);
+      }}
+    />
+  );
+};
 
 Button.propTypes = {
   /**
@@ -110,7 +92,7 @@ Button.propTypes = {
   /**
    * The component tag.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
   /**
    * The inner ref.
    * @type {[type]}
@@ -123,8 +105,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  theme: "primary",
-  tag: "button"
+  theme: 'primary',
+  tag: 'button'
 };
-
-export default Button;

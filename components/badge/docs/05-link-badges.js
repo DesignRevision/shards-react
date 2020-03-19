@@ -1,5 +1,5 @@
-import React from "react";
-import { Badge } from "shards-react";
+import React from 'react';
+import { Badge } from 'shards-react';
 
 /**
  * ## Link Badges

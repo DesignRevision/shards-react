@@ -1,30 +1,31 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Cards provide a flexible content container that you can use to display a variety of content using contextual background colors, headers and footers.
  */
-const Card = props => {
-  const {
-    className,
-    innerRef,
-    tag: Tag,
-    theme,
-    outline,
-    small,
-    ...attrs
-  } = props;
-
-  const classes = classNames(
-    className,
-    "card",
-    small && "card-small",
-    theme && `${outline ? "border" : "bg"}-${theme}`
-  );
-
-  return <Tag {...attrs} className={classes} ref={innerRef} />;
-};
+export const Card = ({
+  className,
+  innerRef,
+  tag: Tag,
+  theme,
+  outline,
+  small,
+  ...attrs
+}) => (
+  <Tag
+    {...attrs}
+    className={
+      classNames(
+        className,
+        'card',
+        small && 'card-small',
+        theme && `${outline ? 'border' : 'bg'}-${theme}`
+      )
+    }
+    ref={innerRef}/>
+);
 
 Card.propTypes = {
   /**
@@ -42,7 +43,7 @@ Card.propTypes = {
   /**
    * The component tag.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
   /**
    * Whether the card is small, or not.
    */
@@ -58,7 +59,5 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
-
-export default Card;

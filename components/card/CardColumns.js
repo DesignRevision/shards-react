@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardColumns = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "card-columns");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const CardColumns = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, "card-columns")} />
+);
 
 CardColumns.propTypes = {
   /**
@@ -23,5 +24,3 @@ CardColumns.propTypes = {
 CardColumns.defaultProps = {
   tag: "div"
 };
-
-export default CardColumns;

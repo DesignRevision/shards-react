@@ -1,5 +1,5 @@
-import React from "react";
-import { Alert } from "shards-react";
+import React from 'react';
+import { Alert } from 'shards-react';
 
 /**
  * ## Basic Alerts
@@ -10,49 +10,49 @@ export default function AlertExample() {
   return (
     <div className="example">
       <Alert theme="primary">
-        Alert - Primary Theme (default) -{" "}
+        Alert - Primary Theme (default) -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>
       </Alert>
       <Alert theme="secondary">
-        Alert - Secondary Theme -{" "}
+        Alert - Secondary Theme -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>
       </Alert>
       <Alert theme="success">
-        Alert - Success Theme -{" "}
+        Alert - Success Theme -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>
       </Alert>
       <Alert theme="danger">
-        Alert - Danger Theme -{" "}
+        Alert - Danger Theme -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>
       </Alert>
       <Alert theme="warning">
-        Alert - Warning Theme -{" "}
+        Alert - Warning Theme -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>
       </Alert>
       <Alert theme="info">
-        Alert - Info Theme -{" "}
+        Alert - Info Theme -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>
       </Alert>
       <Alert theme="light">
-        Alert - Light Theme -{" "}
+        Alert - Light Theme -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>
       </Alert>
       <Alert theme="dark">
-        Alert - Dark Theme -{" "}
+        Alert - Dark Theme -{' '}
         <a className="alert-link" href="#">
           Example Link
         </a>

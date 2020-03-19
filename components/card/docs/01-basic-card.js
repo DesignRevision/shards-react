@@ -1,13 +1,5 @@
-import React from "react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardImg,
-  CardBody,
-  CardFooter,
-  Button
-} from "shards-react";
+import React from 'react';
+import { Button, Card, CardBody, CardFooter, CardHeader, CardImg, CardTitle } from 'shards-react';
 
 /**
  * ## Basic Example
@@ -16,9 +8,9 @@ import {
  */
 export default function BasicCardExample() {
   return (
-    <Card style={{ maxWidth: "300px" }}>
+    <Card style={{maxWidth: '300px'}}>
       <CardHeader>Card header</CardHeader>
-      <CardImg src="https://place-hold.it/300x200" />
+      <CardImg src="https://place-hold.it/300x200"/>
       <CardBody>
         <CardTitle>Lorem Ipsum</CardTitle>
         <p>Lorem ipsum dolor sit amet.</p>

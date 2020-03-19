@@ -1,21 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Button groups allow you to group buttons together on a single line.
  */
-const ButtonGroup = props => {
-  const { className, vertical, size, ...attrs } = props;
-
-  const classes = classNames(
-    className,
-    size && `btn-group-${size}`,
-    vertical ? "btn-group-vertical" : "btn-group"
-  );
-
-  return <div className={classes} {...attrs} />;
-};
+export const ButtonGroup = ({
+  className,
+  vertical,
+  size,
+  ...attrs
+}) => (
+  <div className={
+    classNames(
+      className,
+      size && `btn-group-${size}`,
+      vertical ? 'btn-group-vertical' : 'btn-group'
+    )
+  } {...attrs} />
+);
 
 ButtonGroup.propTypes = {
   /**
@@ -35,5 +38,3 @@ ButtonGroup.propTypes = {
    */
   vertical: PropTypes.bool
 };
-
-export default ButtonGroup;

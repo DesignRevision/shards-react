@@ -1,5 +1,5 @@
-import React from "react";
-import { Alert, Button } from "shards-react";
+import React from 'react';
+import { Alert, Button } from 'shards-react';
 
 /**
  * ## Self Dismissing Alert
@@ -24,7 +24,7 @@ export default class SelfDismissingAlertExample extends React.Component {
 
   showAlert() {
     this.clearInterval();
-    this.setState({ visible: true, countdown: 0, timeUntilDismissed: 5 });
+    this.setState({visible: true, countdown: 0, timeUntilDismissed: 5});
     this.interval = setInterval(this.handleTimeChange, 1000);
   }
 
@@ -32,12 +32,12 @@ export default class SelfDismissingAlertExample extends React.Component {
     if (this.state.countdown < this.state.timeUntilDismissed - 1) {
       this.setState({
         ...this.state,
-        ...{ countdown: this.state.countdown + 1 }
+        ...{countdown: this.state.countdown + 1}
       });
       return;
     }
 
-    this.setState({ ...this.state, ...{ visible: false } });
+    this.setState({...this.state, ...{visible: false}});
     this.clearInterval();
   }
 
@@ -50,7 +50,7 @@ export default class SelfDismissingAlertExample extends React.Component {
     return (
       <div>
         <Alert className="mb-3" open={this.state.visible} theme="success">
-          Success! This alert will will be dismissed in{" "}
+          Success! This alert will will be dismissed in{' '}
           {this.state.timeUntilDismissed - this.state.countdown} seconds!
         </Alert>
         <Button onClick={this.showAlert}>Show Alert!</Button>

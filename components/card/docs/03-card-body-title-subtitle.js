@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardBody, CardTitle, CardSubtitle } from "shards-react";
+import React from 'react';
+import { Card, CardBody, CardSubtitle, CardTitle } from 'shards-react';
 
 /**
  * ## Card Body Title and Subtitle

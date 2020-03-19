@@ -1,23 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardImg = props => {
-  const { className, top, bottom, tag: Tag, ...attrs } = props;
-  let cardImgClass = "";
-
-  if (top) {
-    cardImgClass = "card-img-top";
-  }
-
-  if (bottom) {
-    cardImgClass = "card-img-bottom";
-  }
-
-  cardImgClass = classNames(className, cardImgClass);
-
-  return <Tag {...attrs} className={cardImgClass} />;
-};
+export const CardImg = ({
+  bottom,
+  className,
+  tag: Tag,
+  top,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, bottom ? 'card-img-bottom' : top ? 'card-img-top' : '')}/>
+);
 
 CardImg.propTypes = {
   /**
@@ -35,11 +28,9 @@ CardImg.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 CardImg.defaultProps = {
-  tag: "img"
+  tag: 'img'
 };
-
-export default CardImg;

@@ -1,19 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const CardDeck = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "card-deck");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const CardDeck = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'card-deck')}/>
+);
 
 CardDeck.propTypes = {
   /**
    * The component tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
   /**
    * The class name.
    */
@@ -21,7 +22,5 @@ CardDeck.propTypes = {
 };
 
 CardDeck.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
-
-export default CardDeck;

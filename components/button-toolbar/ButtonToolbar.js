@@ -1,16 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Button toolbars allow you to group a series of button or input groups on a single line.
  */
-const ButtonToolbar = props => {
-  const { className, ...attrs } = props;
-  const classes = classNames(className, "btn-toolbar");
-
-  return <div className={classes} {...attrs} />;
-};
+export const ButtonToolbar = ({className, ...attrs}) => (
+  <div className={classNames(className, 'btn-toolbar')} {...attrs} />
+);
 
 ButtonToolbar.propTypes = {
   /**
@@ -25,5 +22,3 @@ ButtonToolbar.propTypes = {
     PropTypes.node
   ])
 };
-
-export default ButtonToolbar;

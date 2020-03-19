@@ -1,11 +1,5 @@
-import React from "react";
-import {
-  Button,
-  ButtonGroup,
-  ButtonToolbar,
-  FormInput,
-  InputGroup
-} from "shards-react";
+import React from 'react';
+import { Button, ButtonGroup, ButtonToolbar, FormInput, InputGroup } from 'shards-react';
 
 export default function ButtonToolbarExample() {
   return (
@@ -16,7 +10,7 @@ export default function ButtonToolbarExample() {
       </ButtonGroup>
 
       <InputGroup size="sm" className="ml-auto">
-        <FormInput placeholder="Search..." />
+        <FormInput placeholder="Search..."/>
       </InputGroup>
     </ButtonToolbar>
   );

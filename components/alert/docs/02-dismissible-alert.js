@@ -1,5 +1,5 @@
-import React from "react";
-import { Alert } from "shards-react";
+import React from 'react';
+import { Alert } from 'shards-react';
 
 /**
  * ## Dismissible Alerts
@@ -10,7 +10,7 @@ export default class DismissibleAlertExample extends React.Component {
   constructor(props) {
     super(props);
     this.dismiss = this.dismiss.bind(this);
-    this.state = { visible: true };
+    this.state = {visible: true};
   }
 
   render() {
@@ -22,6 +22,6 @@ export default class DismissibleAlertExample extends React.Component {
   }
 
   dismiss() {
-    this.setState({ visible: false });
+    this.setState({visible: false});
   }
 }

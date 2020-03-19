@@ -1,5 +1,5 @@
-import React from "react";
-import { Breadcrumb, BreadcrumbItem } from "shards-react";
+import React from 'react';
+import { Breadcrumb, BreadcrumbItem } from 'shards-react';
 
 /**
  * ## Basic Example
