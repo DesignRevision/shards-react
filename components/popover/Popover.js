@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -9,164 +9,135 @@ import { EVENTS, TIMEOUT } from '../constants';
 /**
  * Popovers are powerful elements similar to tooltips and powered by Popper.js that can be applies to any interactive element.
  */
-class Popover extends React.Component {
-  constructor(props) {
-    super(props);
+export const Popover = ({
+  className,
+  target,
+  container,
+  modifiers,
+  open,
+  innerClassName,
+  noArrow,
+  arrowClassName,
+  placement,
+  placementPrefix,
+  boundariesElement,
+  offset,
+  ...attrs
+}) => {
+  const [_target, setTarget] = useState(setTarget(getTarget(target)));
+  const [_hideTimeout, setHideTimeout] = useState(null);
+  const [_showTimeout, setShowTimeout] = useState(null);
 
-    this.show = this.show.bind(this);
-    this.hide = this.hide.bind(this);
-    this.maybeShow = this.maybeShow.bind(this);
-    this.toggle = this.toggle.bind(this);
-    this.addListeners = this.addListeners.bind(this);
-    this.removeListeners = this.removeListeners.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.getDelay = this.getDelay.bind(this);
+  const show = () => {
+    clearTimeout(_hideTimeout);
+    addListeners();
 
-    this._target = null;
-    this._hideTimeout = null;
-    this._showTimeout = null;
-  }
-
-  componentDidMount() {
-    this._target = getTarget(this.props.target);
-    this.maybeShow();
-  }
-
-  componentDidUpdate() {
-    this.maybeShow();
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this._showTimeout);
-    clearTimeout(this._hideTimeout);
-    this.removeListeners();
-  }
-
-  show() {
-    clearTimeout(this._hideTimeout);
-    this.addListeners();
-
-    if (!this.props.open) {
-      clearTimeout(this._showTimeout);
-      this._showTimeout = setTimeout(this.toggle, this.getDelay('show'));
+    if (!open) {
+      clearTimeout(_showTimeout);
+      setShowTimeout(setTimeout(attrs.toggle, getDelay('show')));
     }
-  }
+  };
 
-  hide() {
-    clearTimeout(this._showTimeout);
-    this.removeListeners();
-
-    if (this.props.open) {
-      clearTimeout(this._hideTimeout);
-      this._hideTimeout = setTimeout(this.toggle, this.getDelay('hide'));
-    }
-  }
-
-  maybeShow() {
-    if (this.props.open) {
-      this.show();
-      return;
-    }
-
-    this.hide();
-  }
-
-  toggle(event) {
-    if (this.props.disabled) {
+  const toggle = event => {
+    if (attrs.disabled) {
       event.preventDefault();
       return;
     }
 
-    return this.props.toggle(event);
-  }
+    return attrs.toggle(event);
+  };
 
-  addListeners() {
-    EVENTS.CLICK.forEach(event =>
-      document.addEventListener(event, this.handleClick, true)
-    );
-  }
-
-  removeListeners() {
-    EVENTS.CLICK.forEach(event => {
-      document.removeEventListener(event, this.handleClick, true);
-    });
-  }
-
-  handleClick(event) {
-    if (!this._target) {
+  const handleClick = event => {
+    if (!_target) {
       return;
     }
 
     if (
-      event.target !== this._target &&
-      !this._target.contains(event.target) &&
-      event.target !== this._popover &&
-      !(this._popover && this._popover.contains(event.target))
+      event.target !== _target &&
+      !_target.contains(event.target)  //not sure but it's useless IMHO
     ) {
-      if (this._hideTimeout) {
-        clearTimeout(this._hideTimeout);
+      if (_hideTimeout) {
+        clearTimeout(_hideTimeout);
       }
 
-      if (this.props.open) {
-        this.toggle(event);
+      if (open) {
+        toggle(event);
       }
     }
-  }
+  };
 
-  getDelay(key) {
+  const getDelay = key => {
     key = key.toUpperCase();
-    if (typeof this.props.delay === 'object') {
-      return isNaN(this.props.delay[ key ])
+    if (typeof attrs.delay === 'object') {
+      return isNaN(attrs.delay[ key ])
         ? TIMEOUT[ key ]
-        : this.props.delay[ key ];
+        : attrs.delay[ key ];
     }
 
-    return this.props.delay;
-  }
+    return attrs.delay;
+  };
 
-  render() {
-    const {
-      className,
-      target,
-      container,
-      modifiers,
-      open,
-      innerClassName,
-      noArrow,
-      arrowClassName,
-      placement,
-      placementPrefix,
-      boundariesElement,
-      offset,
-      ...attrs
-    } = this.props; // disabled, toggle, delay
+  const hide = () => {
+    clearTimeout(_showTimeout);
+    removeListeners();
 
-    if (!open) {
-      return null;
+    if (open) {
+      clearTimeout(_hideTimeout);
+      setHideTimeout(setTimeout(toggle, getDelay('hide')));
     }
+  };
 
-    const classes = classNames('popover-inner', innerClassName);
-    const popperClasses = classNames('popover', 'show', className);
+  const removeListeners = () => {
+    EVENTS.CLICK.forEach(event => {
+      document.removeEventListener(event, handleClick, true);
+    });
+  };
 
-    return (
-      <PopperManager
-        className={popperClasses}
-        target={target}
-        container={container}
-        modifiers={modifiers}
-        offset={offset}
-        open={open}
-        noArrow={noArrow}
-        arrowClassName={arrowClassName}
-        placement={placement}
-        placementPrefix={placementPrefix}
-        boundariesElement={boundariesElement}
-      >
-        <div {...attrs} className={classes}/>
-      </PopperManager>
+  const addListeners = () => {
+    EVENTS.CLICK.forEach(event =>
+      document.addEventListener(event, handleClick, true)
     );
+  };
+
+  const maybeShow = () => {
+    if (open) {
+      show();
+      return;
+    }
+    hide();
+  };
+
+  useEffect(() => {
+    maybeShow();
+    return () => {
+      clearTimeout(_showTimeout);
+      clearTimeout(_hideTimeout);
+      removeListeners();
+    }
+  }, []);
+
+  if (!open) {
+    return null;
   }
-}
+
+  return (
+    <PopperManager
+      className={classNames('popover', 'show', className)}
+      target={target}
+      container={container}
+      modifiers={modifiers}
+      offset={offset}
+      open={open}
+      noArrow={noArrow}
+      arrowClassName={arrowClassName}
+      placement={placement}
+      placementPrefix={placementPrefix}
+      boundariesElement={boundariesElement}
+    >
+      <div {...attrs} className={classNames('popover-inner', innerClassName)}/>
+    </PopperManager>
+  );
+};
 
 Popover.propTypes = {
   /**
@@ -263,5 +234,3 @@ Popover.defaultProps = {
   toggle: function () {
   }
 };
-
-export default Popover;

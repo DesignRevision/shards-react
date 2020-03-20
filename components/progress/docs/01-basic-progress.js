@@ -1,5 +1,5 @@
-import React from "react";
-import { Progress } from "shards-react";
+import React from 'react';
+import { Progress } from 'shards-react';
 
 /**
  * ## Basic Example
@@ -7,5 +7,5 @@ import { Progress } from "shards-react";
  * You can change the bar's color using the `theme` prop. The default value is `primary`.
  */
 export default function BasicProgress() {
-  return <Progress theme="primary" value={50} />;
+  return <Progress theme="primary" value={50}/>;
 }

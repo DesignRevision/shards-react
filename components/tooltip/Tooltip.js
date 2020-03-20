@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import omit from "lodash.omit";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import omit from 'lodash.omit';
 
-import { getTarget, CustomPropTypes } from "../utils";
-import { TIMEOUT, EVENTS, POPPER_PLACEMENTS } from "../constants";
-import PopperManager from "../../utils/PopperManager";
+import { CustomPropTypes, getTarget } from '../utils';
+import { EVENTS, POPPER_PLACEMENTS, TIMEOUT } from '../constants';
+import PopperManager from '../../utils/PopperManager';
 
 /**
  * Tooltips are powerful components powered behind the scenes by Popper.js that can be attached to any element.
@@ -46,15 +46,15 @@ class Tooltip extends React.Component {
 
     triggers.forEach(trigger => {
       switch (trigger) {
-        case "click":
+        case 'click':
           EVENTS.CLICK.forEach(e => document.addEventListener(e, this));
           break;
 
-        case "hover":
+        case 'hover':
           EVENTS.MOUSE.forEach(e => this._target.addEventListener(e, this));
           break;
 
-        case "focus":
+        case 'focus':
           EVENTS.FOCUS.forEach(e => this._target.addEventListener(e, this));
           break;
 
@@ -78,24 +78,24 @@ class Tooltip extends React.Component {
     }
 
     switch (e.type) {
-      case "click":
-      case "touchstart":
+      case 'click':
+      case 'touchstart':
         this.handleClick(e);
         break;
 
-      case "mouseenter":
+      case 'mouseenter':
         this.handleMouseEnter(e);
         break;
 
-      case "mouseleave":
+      case 'mouseleave':
         this.handleMouseLeave(e);
         break;
 
-      case "focusin":
+      case 'focusin':
         this.show(e);
         break;
 
-      case "focusout":
+      case 'focusout':
         this.hide(e);
         break;
 
@@ -120,14 +120,14 @@ class Tooltip extends React.Component {
       return;
     }
 
-    if (this.props.open && e.target.getAttribute("role") !== "tooltip") {
+    if (this.props.open && e.target.getAttribute('role') !== 'tooltip') {
       if (this._showTimeout) {
         clearTimeout(this._showTimeout);
       }
 
       this._hideTimeout = setTimeout(
         this.hide.bind(this, e),
-        this.getDelay("hide")
+        this.getDelay('hide')
       );
     }
   }
@@ -139,7 +139,7 @@ class Tooltip extends React.Component {
 
     this._showTimeout = setTimeout(
       this.show.bind(this, e),
-      this.getDelay("show")
+      this.getDelay('show')
     );
   }
 
@@ -150,7 +150,7 @@ class Tooltip extends React.Component {
 
     this._hideTimeout = setTimeout(
       this.hide.bind(this, e),
-      this.getDelay("hide")
+      this.getDelay('hide')
     );
   }
 
@@ -176,16 +176,16 @@ class Tooltip extends React.Component {
     e.persist();
     this._hideTimeout = setTimeout(
       this.hide.bind(this, e),
-      this.getDelay("hide")
+      this.getDelay('hide')
     );
   }
 
   getDelay(key) {
     key = key.toUpperCase();
-    if (typeof this.props.delay === "object") {
-      return isNaN(this.props.delay[key])
-        ? TIMEOUT[key]
-        : this.props.delay[key];
+    if (typeof this.props.delay === 'object') {
+      return isNaN(this.props.delay[ key ])
+        ? TIMEOUT[ key ]
+        : this.props.delay[ key ];
     }
 
     return this.props.delay;
@@ -215,11 +215,11 @@ class Tooltip extends React.Component {
 
   render() {
     const _props = omit(this.props, [
-      "trigger",
-      "disabled",
-      "delay",
-      "toggle",
-      "autohide"
+      'trigger',
+      'disabled',
+      'delay',
+      'toggle',
+      'autohide'
     ]);
     const {
       target,
@@ -241,9 +241,9 @@ class Tooltip extends React.Component {
       return null;
     }
 
-    const classes = classNames("tooltip-inner", innerClassName);
+    const classes = classNames('tooltip-inner', innerClassName);
 
-    const popperClasses = classNames("tooltip", "show", className);
+    const popperClasses = classNames('tooltip', 'show', className);
 
     return (
       <PopperManager
@@ -316,7 +316,7 @@ Tooltip.propTypes = {
   /**
    * The tooltip offset.
    */
-  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  offset: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
 
   /**
    * The show/hide delay in ms.
@@ -332,7 +332,7 @@ Tooltip.propTypes = {
   /**
    * The boundaries element for the tooltip instance.
    */
-  boundariesElement: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  boundariesElement: PropTypes.oneOfType([ PropTypes.string, PropTypes.element ]),
 
   /**
    * The tooltip placement.
@@ -366,18 +366,19 @@ Tooltip.propTypes = {
 };
 
 Tooltip.defaultProps = {
-  trigger: "hover",
+  trigger: 'hover',
   open: false,
   disabled: false,
   noArrow: false,
-  placement: "top",
-  placementPrefix: "bs-tooltip",
+  placement: 'top',
+  placementPrefix: 'bs-tooltip',
   autohide: true,
   delay: {
     show: 0,
     hide: 0
   },
-  toggle: function() {}
+  toggle: function () {
+  }
 };
 
 export default Tooltip;

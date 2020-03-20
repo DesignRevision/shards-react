@@ -1,5 +1,5 @@
-import React from "react";
-import { Progress } from "shards-react";
+import React from 'react';
+import { Progress } from 'shards-react';
 
 /**
  * ## Labels

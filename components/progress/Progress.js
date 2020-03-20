@@ -1,27 +1,25 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import toNumber from "lodash.tonumber";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import toNumber from 'lodash.tonumber';
 
 /**
  * You can use the `Progress` component to display simple or complex progress bars.
  */
-const Progress = props => {
-  const {
-    children,
-    className,
-    barClassName,
-    value,
-    max,
-    animated,
-    striped,
-    theme,
-    bar,
-    multi,
-    tag: Tag,
-    ...attrs
-  } = props;
-
+export const Progress = ({
+  children,
+  className,
+  barClassName,
+  value,
+  max,
+  animated,
+  striped,
+  theme,
+  bar,
+  multi,
+  tag: Tag,
+  ...attrs
+}) => {
   const percent = (toNumber(value) / toNumber(max)) * 100;
   const progressClasses = classNames(className, "progress");
   const progressBarClasses = classNames(
@@ -111,5 +109,3 @@ Progress.defaultProps = {
   max: 100,
   theme: "primary"
 };
-
-export default Progress;

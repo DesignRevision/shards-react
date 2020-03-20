@@ -1,5 +1,5 @@
-import React from "react";
-import { Progress } from "shards-react";
+import React from 'react';
+import { Progress } from 'shards-react';
 
 /**
  * ## Multiple
@@ -9,8 +9,8 @@ import { Progress } from "shards-react";
 export default function BasicProgress() {
   return (
     <Progress multi>
-      <Progress bar value="50" />
-      <Progress bar theme="success" value="20" />
+      <Progress bar value="50"/>
+      <Progress bar theme="success" value="20"/>
     </Progress>
   );
 }

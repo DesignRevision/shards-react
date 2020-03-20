@@ -1,5 +1,5 @@
-import React from "react";
-import { Slider } from "shards-react";
+import React from 'react';
+import { Slider } from 'shards-react';
 
 /**
  * ## Slider Themes
@@ -10,9 +10,9 @@ export default function BasicSliderExample() {
   return (
     <Slider
       theme="success"
-      connect={[true, false]}
-      start={[50]}
-      range={{ min: 0, max: 100 }}
+      connect={[ true, false ]}
+      start={[ 50 ]}
+      range={{min: 0, max: 100}}
     />
   );
 }

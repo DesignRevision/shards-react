@@ -1,5 +1,5 @@
-import React from "react";
-import { Slider } from "shards-react";
+import React from 'react';
+import { Slider } from 'shards-react';
 
 /**
  * ## Basic Slider
@@ -8,6 +8,6 @@ import { Slider } from "shards-react";
  */
 export default function BasicSliderExample() {
   return (
-    <Slider connect={[true, false]} start={[20]} range={{ min: 0, max: 100 }} />
+    <Slider connect={[ true, false ]} start={[ 20 ]} range={{min: 0, max: 100}}/>
   );
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { Tooltip, Button } from "shards-react";
+import React from 'react';
+import { Button, Tooltip } from 'shards-react';
 
 /**
  * ## Placement
@@ -20,8 +20,8 @@ export default class TooltipPlacementExample extends React.Component {
 
   toggle(pos) {
     const newState = {};
-    newState[pos] = !this.state[pos];
-    this.setState({ ...this.state, ...newState });
+    newState[ pos ] = !this.state[ pos ];
+    this.setState({...this.state, ...newState});
   }
 
   render() {
@@ -33,7 +33,7 @@ export default class TooltipPlacementExample extends React.Component {
         <Tooltip
           open={this.state.top}
           target="#TooltipTop"
-          toggle={() => this.toggle("top")}
+          toggle={() => this.toggle('top')}
         >
           I am on top! ☝️
         </Tooltip>
@@ -45,7 +45,7 @@ export default class TooltipPlacementExample extends React.Component {
           placement="bottom"
           open={this.state.bottom}
           target="#TooltipBottom"
-          toggle={() => this.toggle("bottom")}
+          toggle={() => this.toggle('bottom')}
         >
           I am at the bottom! 👇
         </Tooltip>
@@ -57,7 +57,7 @@ export default class TooltipPlacementExample extends React.Component {
           placement="left"
           open={this.state.left}
           target="#TooltipLeft"
-          toggle={() => this.toggle("left")}
+          toggle={() => this.toggle('left')}
         >
           I am on the left! 👈
         </Tooltip>
@@ -69,7 +69,7 @@ export default class TooltipPlacementExample extends React.Component {
           placement="right"
           open={this.state.right}
           target="#TooltipRight"
-          toggle={() => this.toggle("right")}
+          toggle={() => this.toggle('right')}
         >
           I am on the right! 👉
         </Tooltip>

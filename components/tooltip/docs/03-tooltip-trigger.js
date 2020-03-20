@@ -1,5 +1,5 @@
-import React from "react";
-import { Tooltip, Button } from "shards-react";
+import React from 'react';
+import { Button, Tooltip } from 'shards-react';
 
 /**
  * ## Triggers
@@ -10,7 +10,7 @@ export default class TooltipClickExample extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
-    this.state = { open: false };
+    this.state = {open: false};
   }
 
   toggle() {
