@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const ListGroupItemHeading = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "list-group-item-heading");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const ListGroupItemHeading = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'list-group-item-heading')}/>
+);
 
 ListGroupItemHeading.propTypes = {
   /**
@@ -17,11 +18,9 @@ ListGroupItemHeading.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 ListGroupItemHeading.defaultProps = {
-  tag: "h5"
+  tag: 'h5'
 };
-
-export default ListGroupItemHeading;

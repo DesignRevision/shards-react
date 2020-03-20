@@ -1,17 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const ModalBody = props => {
-  const { className, children, ...attrs } = props;
-  const classes = classNames("modal-body", className);
-
-  return (
-    <div className={classes} {...attrs}>
-      {children}
-    </div>
-  );
-};
+export const ModalBody = ({className, children, ...attrs}) => (
+  <div className={classNames('modal-body', className)} {...attrs}>
+    {children}
+  </div>
+);
 
 ModalBody.propTypes = {
   /**
@@ -26,5 +21,3 @@ ModalBody.propTypes = {
     PropTypes.node
   ])
 };
-
-export default ModalBody;

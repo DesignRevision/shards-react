@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Modal, ModalBody, ModalHeader } from "shards-react";
+import React from 'react';
+import { Button, Modal, ModalBody, ModalHeader } from 'shards-react';
 
 /**
  * ## Modal Size
@@ -9,7 +9,7 @@ import { Button, Modal, ModalBody, ModalHeader } from "shards-react";
 export default class ModalSizeExample extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = {open: false};
     this.toggle = this.toggle.bind(this);
   }
 
@@ -20,7 +20,7 @@ export default class ModalSizeExample extends React.Component {
   }
 
   render() {
-    const { open } = this.state;
+    const {open} = this.state;
     return (
       <div>
         <Button onClick={this.toggle}>Small Modal!</Button>

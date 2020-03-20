@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import PopperManager from "../../utils/PopperManager";
-import { CustomPropTypes, getTarget } from "../utils";
-import { EVENTS, TIMEOUT } from "../constants";
+import PopperManager from '../../utils/PopperManager';
+import { CustomPropTypes, getTarget } from '../utils';
+import { EVENTS, TIMEOUT } from '../constants';
 
 /**
  * Popovers are powerful elements similar to tooltips and powered by Popper.js that can be applies to any interactive element.
@@ -48,7 +48,7 @@ class Popover extends React.Component {
 
     if (!this.props.open) {
       clearTimeout(this._showTimeout);
-      this._showTimeout = setTimeout(this.toggle, this.getDelay("show"));
+      this._showTimeout = setTimeout(this.toggle, this.getDelay('show'));
     }
   }
 
@@ -58,7 +58,7 @@ class Popover extends React.Component {
 
     if (this.props.open) {
       clearTimeout(this._hideTimeout);
-      this._hideTimeout = setTimeout(this.toggle, this.getDelay("hide"));
+      this._hideTimeout = setTimeout(this.toggle, this.getDelay('hide'));
     }
   }
 
@@ -115,10 +115,10 @@ class Popover extends React.Component {
 
   getDelay(key) {
     key = key.toUpperCase();
-    if (typeof this.props.delay === "object") {
-      return isNaN(this.props.delay[key])
-        ? TIMEOUT[key]
-        : this.props.delay[key];
+    if (typeof this.props.delay === 'object') {
+      return isNaN(this.props.delay[ key ])
+        ? TIMEOUT[ key ]
+        : this.props.delay[ key ];
     }
 
     return this.props.delay;
@@ -145,8 +145,8 @@ class Popover extends React.Component {
       return null;
     }
 
-    const classes = classNames("popover-inner", innerClassName);
-    const popperClasses = classNames("popover", "show", className);
+    const classes = classNames('popover-inner', innerClassName);
+    const popperClasses = classNames('popover', 'show', className);
 
     return (
       <PopperManager
@@ -162,7 +162,7 @@ class Popover extends React.Component {
         placementPrefix={placementPrefix}
         boundariesElement={boundariesElement}
       >
-        <div {...attrs} className={classes} />
+        <div {...attrs} className={classes}/>
       </PopperManager>
     );
   }
@@ -217,7 +217,7 @@ Popover.propTypes = {
   /**
    * The boundaries element for the Popover instance.
    */
-  boundariesElement: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  boundariesElement: PropTypes.oneOfType([ PropTypes.string, PropTypes.element ]),
 
   /**
    * The popover placement.
@@ -232,7 +232,7 @@ Popover.propTypes = {
   /**
    * The popover offset.
    */
-  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  offset: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
 
   /**
    * The toggle function.
@@ -254,13 +254,14 @@ Popover.propTypes = {
 Popover.defaultProps = {
   open: false,
   noArrow: false,
-  placement: "top",
-  placementPrefix: "bs-popover",
+  placement: 'top',
+  placementPrefix: 'bs-popover',
   delay: {
     show: 0,
     hide: 0
   },
-  toggle: function() {}
+  toggle: function () {
+  }
 };
 
 export default Popover;

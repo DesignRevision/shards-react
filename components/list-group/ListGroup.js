@@ -1,21 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * List groups allow you to display series of content.
  */
-const ListGroup = props => {
-  const { className, tag: Tag, flush, small, ...attrs } = props;
-  const classes = classNames(
-    className,
-    "list-group",
-    small && "list-group-sm",
-    flush && "list-group-flush"
-  );
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const ListGroup = ({
+  className,
+  tag: Tag,
+  flush,
+  small,
+  ...attrs
+}) => (
+  <Tag
+    {...attrs}
+    className={
+      classNames(
+        className,
+        'list-group',
+        small && 'list-group-sm',
+        flush && 'list-group-flush'
+      )
+    }/>
+);
 
 ListGroup.propTypes = {
   /**
@@ -33,11 +40,9 @@ ListGroup.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 ListGroup.defaultProps = {
-  tag: "ul"
+  tag: 'ul'
 };
-
-export default ListGroup;

@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const NavbarBrand = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "navbar-brand");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const NavbarBrand = ({className, tag: Tag, ...attrs}) => (
+  <Tag
+    {...attrs}
+    className={classNames(className, "navbar-brand")}
+  />
+);
 
 NavbarBrand.propTypes = {
   /**
@@ -23,5 +23,3 @@ NavbarBrand.propTypes = {
 NavbarBrand.defaultProps = {
   tag: "a"
 };
-
-export default NavbarBrand;

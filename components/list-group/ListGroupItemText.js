@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const ListGroupItemText = props => {
-  const { className, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "list-group-item-text");
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const ListGroupItemText = ({
+  className,
+  tag: Tag,
+  ...attrs
+}) => (
+  <Tag {...attrs} className={classNames(className, 'list-group-item-text')}/>
+);
 
 ListGroupItemText.propTypes = {
   /**
@@ -17,11 +18,9 @@ ListGroupItemText.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 ListGroupItemText.defaultProps = {
-  tag: "p"
+  tag: 'p'
 };
-
-export default ListGroupItemText;

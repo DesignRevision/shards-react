@@ -2,23 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const ModalHeader = props => {
-  const {
-    className,
-    children,
-    toggle,
-    tag: Tag,
-    closeAriaLabel,
-    titleClass,
-    ...attrs
-  } = props;
-
-  const classes = classNames("modal-header", className);
-  const titleClasses = classNames("modal-title", titleClass);
-  let closeButton = null;
-
-  if (toggle) {
-    closeButton = (
+export const ModalHeader = ({
+  className,
+  children,
+  toggle,
+  tag: Tag,
+  closeAriaLabel,
+  titleClass,
+  ...attrs
+}) => (
+  <div
+    className={classNames("modal-header", className)}
+    {...attrs}>
+    <Tag className={classNames("modal-title", titleClass)}>{children}</Tag>
+    {toggle && (
       <button
         type="button"
         onClick={toggle}
@@ -27,16 +24,9 @@ const ModalHeader = props => {
       >
         <span aria-hidden="true">{String.fromCharCode(215)}</span>
       </button>
-    );
-  }
-
-  return (
-    <div className={classes} {...attrs}>
-      <Tag className={titleClasses}>{children}</Tag>
-      {closeButton}
-    </div>
-  );
-};
+    )}
+  </div>
+);
 
 ModalHeader.propTypes = {
   /**
@@ -72,5 +62,3 @@ ModalHeader.defaultProps = {
   tag: "h5",
   closeAriaLabel: "Close"
 };
-
-export default ModalHeader;

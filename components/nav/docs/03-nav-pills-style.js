@@ -1,5 +1,5 @@
-import React from "react";
-import { Nav, NavItem, NavLink } from "shards-react";
+import React from 'react';
+import { Nav, NavItem, NavLink } from 'shards-react';
 
 /**
  * ## Pills Style

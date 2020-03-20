@@ -1,170 +1,144 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { Transition } from "react-transition-group";
+import React, { Fragment, useRef } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { Transition } from 'react-transition-group';
 
-import { TIMEOUT } from "../constants";
+import { TIMEOUT } from '../constants';
 
 /**
  * Creating flexible modal dialogs can be achieved using the `Modal` component. They feature a series of helpful subcomponents, sizes and various other options that you can use to customize the display and behavior of your modals.
  */
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      open: this.props.open || false
-    };
-
-    this.handleOnEntered = this.handleOnEntered.bind(this);
-    this.handleOnExit = this.handleOnExit.bind(this);
-    this.handleOnExited = this.handleOnExited.bind(this);
-    this.handleBackdropClick = this.handleBackdropClick.bind(this);
-
-    this.modalContent = null;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.open !== this.props.open) {
-      this.setState({ open: this.props.open });
-    }
-  }
-
-  handleOnEntered(type, node) {
-    const { fade, showModal } = this.props;
-
-    if (type === "backdrop" && fade === false) {
+export const Modal = ({
+  id,
+  backdrop,
+  fade,
+  tabIndex,
+  backdropClassName,
+  modalClassName,
+  animation,
+  modalContentClassName,
+  position,
+  role,
+  size,
+  children,
+  centered,
+  className,
+  ...attrs
+}) => {
+  const ref = useRef();
+  const handleOnEntered = (type, node) => {
+    if (type === 'backdrop' && fade === false) {
       return;
     }
 
-    node.classList.add("show");
+    node.classList.add('show');
 
-    if (type === "modal") {
-      showModal && showModal();
+    if (type === 'modal') {
+      attrs.showModal && attrs.showModal();
     }
-  }
+  };
 
-  handleOnExit(type, node) {
-    const { fade, hideModal } = this.props;
-
-    if (type === "backdrop" && fade === false) {
+  const handleOnExit = (type, node) => {
+    if (type === 'backdrop' && fade === false) {
       return;
     }
 
-    node.classList.remove("show");
+    node.classList.remove('show');
 
-    if (type === "modal") {
-      hideModal && hideModal();
+    if (type === 'modal') {
+      attrs.hideModal && attrs.hideModal();
     }
+  };
+
+  const handleOnExited = () => {
+    attrs.hiddenModal && attrs.hiddenModal();
+  };
+
+  const handleBackdropClick = (e) => {
+    if (!ref.current.contains(e.target)) {
+      attrs.toggle();
+    }
+  };
+
+  if (!open) {
+    return null;
   }
 
-  handleOnExited() {
-    this.props.hiddenModal && this.props.hiddenModal();
-  }
-
-  handleBackdropClick(e) {
-    if (!this.modalContent.contains(e.target)) {
-      this.props.toggle();
-    }
-  }
-
-  render() {
-    if (!this.state.open) {
-      return null;
-    }
-
-    const {
-      id,
-      backdrop,
-      fade,
-      tabIndex,
-      backdropClassName,
-      modalClassName,
-      animation,
-      modalContentClassName,
-      position,
-      role,
-      size,
-      children,
-      centered,
-      className
-    } = this.props; // open, showModal, hideModal, hiddenModal, toggle
-
-    const backdropClasses = classNames(
-      "modal-backdrop",
-      fade ? "fade" : "show",
-      backdropClassName
-    );
-
-    const modalClasses = classNames(
-      "modal",
-      fade && "fade",
-      modalClassName,
-      fade &&
-        (animation || (position && position.split("-").slice(-1)[0]) || "top")
-    );
-
-    const modalAttrs = {
-      "aria-hidden": true,
-      id: id || undefined,
-      tabIndex,
-      role,
-      style: {
-        display: "block"
-      }
-    };
-
-    const modalDialogClasses = classNames(
-      "modal-dialog",
-      className,
-      size && `modal-${size}`,
-      centered && "modal-dialog-centered",
-      position && `modal-${position}`
-    );
-
-    const contentClasses = classNames("modal-content", modalContentClassName);
-
-    return (
-      <Fragment>
-        {backdrop && (
-          <Transition
-            timeout={fade ? TIMEOUT.FADE : 0}
-            in={this.state.open}
-            appear={this.state.open}
-            mountOnEnter
-            unmountOnExit
-            onEntered={node => this.handleOnEntered("backdrop", node)}
-            onExit={node => this.handleOnExit("backdrop", node)}
-            onExited={this.handleOnExited}
-          >
-            <div className={backdropClasses} />
-          </Transition>
-        )}
+  return (
+    <Fragment ref={ref}>
+      {backdrop && (
         <Transition
           timeout={fade ? TIMEOUT.FADE : 0}
-          in={this.state.open}
-          appear={this.state.open}
+          in={open}
+          appear={open}
           mountOnEnter
           unmountOnExit
-          onClick={this.handleBackdropClick}
-          onEntered={node => this.handleOnEntered("modal", node)}
-          onExit={node => this.handleOnExit("modal", node)}
+          onEntered={node => handleOnEntered('backdrop', node)}
+          onExit={node => handleOnExit('backdrop', node)}
+          onExited={handleOnExited}
         >
-          <div className={modalClasses} {...modalAttrs}>
-            <div className={modalDialogClasses} role="document">
-              <div
-                ref={el => (this.modalContent = el)}
-                className={contentClasses}
-              >
-                {children}
-              </div>
+          <div className={
+            classNames(
+              'modal-backdrop',
+              fade ? 'fade' : 'show',
+              backdropClassName
+            )
+          }/>
+        </Transition>
+      )}
+      <Transition
+        timeout={fade ? TIMEOUT.FADE : 0}
+        in={open}
+        appear={open}
+        mountOnEnter
+        unmountOnExit
+        onClick={handleBackdropClick}
+        onEntered={node => handleOnEntered('modal', node)}
+        onExit={node => handleOnExit('modal', node)}
+      >
+        <div
+          className={
+            classNames(
+              'modal',
+              fade && 'fade',
+              modalClassName,
+              fade &&
+              (animation || (position && position.split('-').slice(-1)[ 0 ]) || 'top')
+            )
+          }
+          {...{
+            'aria-hidden': true,
+            id: id || undefined,
+            tabIndex,
+            role,
+            style: {
+              display: 'block'
+            }
+          }}
+        >
+          <div
+            className={
+              classNames(
+                'modal-dialog',
+                className,
+                size && `modal-${size}`,
+                centered && 'modal-dialog-centered',
+                position && `modal-${position}`
+              )
+            }
+            role="document">
+            <div
+              ref={ref}
+              className={classNames('modal-content', modalContentClassName)}
+            >
+              {children}
             </div>
           </div>
-        </Transition>
-      </Fragment>
-    );
-  }
-}
+        </div>
+      </Transition>
+    </Fragment>
+  );
+};
 
 Modal.propTypes = {
   /**
@@ -252,7 +226,5 @@ Modal.defaultProps = {
   open: false,
   fade: true,
   backdrop: true,
-  role: "dialog"
+  role: 'dialog'
 };
-
-export default Modal;

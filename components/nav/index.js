@@ -1,5 +1,3 @@
-import Nav from "./Nav";
-import NavItem from "./NavItem";
-import NavLink from "./NavLink";
-
-export { Nav, NavItem, NavLink };
+export * from './Nav';
+export * from './NavItem';
+export * from './NavLink';

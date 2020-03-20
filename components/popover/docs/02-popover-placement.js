@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Popover, PopoverBody, PopoverHeader } from "shards-react";
+import React from 'react';
+import { Button, Popover, PopoverBody, PopoverHeader } from 'shards-react';
 
 /**
  * ## Placement
@@ -10,11 +10,11 @@ export default class PopoverPlacementExample extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
-    this.state = { open: false };
+    this.state = {open: false};
   }
 
   toggle() {
-    this.setState({ open: !this.state.open });
+    this.setState({open: !this.state.open});
   }
 
   render() {

@@ -1,17 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const NavbarToggler = props => {
-  const { className, children, tag: Tag, ...attrs } = props;
-  const classes = classNames(className, "navbar-toggler");
-
-  return (
-    <Tag {...attrs} className={classes}>
-      {children || <span className="navbar-toggler-icon" />}
-    </Tag>
-  );
-};
+export const NavbarToggler = ({className, children, tag: Tag, ...attrs}) => (
+  <Tag {...attrs} className={classNames(className, 'navbar-toggler')}>
+    {children || <span className="navbar-toggler-icon"/>}
+  </Tag>
+);
 
 NavbarToggler.propTypes = {
   /**
@@ -29,12 +24,10 @@ NavbarToggler.propTypes = {
   /**
    * The tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 NavbarToggler.defaultProps = {
-  tag: "button",
-  type: "button"
+  tag: 'button',
+  type: 'button'
 };
-
-export default NavbarToggler;

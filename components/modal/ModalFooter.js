@@ -1,17 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const ModalFooter = props => {
-  const { className, children, ...attrs } = props;
-  const classes = classNames("modal-footer", className);
-
-  return (
-    <div className={classes} {...attrs}>
-      {children}
-    </div>
-  );
-};
+export const ModalFooter = ({className, children, ...attrs}) => (
+  <div className={classNames('modal-footer', className)} {...attrs}>
+    {children}
+  </div>
+);
 
 ModalFooter.propTypes = {
   /**
@@ -26,5 +21,3 @@ ModalFooter.propTypes = {
     PropTypes.node
   ])
 };
-
-export default ModalFooter;

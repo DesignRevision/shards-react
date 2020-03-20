@@ -1,56 +1,46 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-class NavLink extends React.Component {
-  constructor(props) {
-    super(props);
+export const NavLink = ({
+  className,
+  active,
+  disabled,
+  tag: Tag,
+  innerRef,
+  ...attrs
+}) => {
+  return (
+    <Tag
+      {...attrs}
+      ref={innerRef}
+      onClick={
+        e => {
+          if (disabled) {
+            e.preventDefault();
+            return;
+          }
 
-    this.handleOnClick = this.handleOnClick.bind(this);
-  }
+          if (attrs.href === '#') {
+            e.preventDefault();
+          }
 
-  handleOnClick(e) {
-    if (this.props.disabled) {
-      e.preventDefault();
-      return;
-    }
-
-    if (this.props.href === "#") {
-      e.preventDefault();
-    }
-
-    if (this.props.onClick) {
-      this.props.onClick(e);
-    }
-  }
-
-  render() {
-    let {
-      className,
-      active,
-      disabled,
-      tag: Tag,
-      innerRef,
-      ...attrs
-    } = this.props;
-
-    const classes = classNames(
-      className,
-      "nav-link",
-      disabled && "disabled",
-      active && "active"
-    );
-
-    return (
-      <Tag
-        {...attrs}
-        ref={innerRef}
-        onClick={this.handleOnClick}
-        className={classes}
-      />
-    );
-  }
-}
+          if (attrs.onClick) {
+            attrs.onClick(e);
+          }
+        }
+      }
+      className={
+        classNames(
+          className,
+          'nav-link',
+          disabled && 'disabled',
+          active && 'active'
+        )
+      }
+    />
+  )
+};
 
 NavLink.propTypes = {
   /**
@@ -76,7 +66,7 @@ NavLink.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
   /**
    * The inner ref.
    */
@@ -88,7 +78,5 @@ NavLink.propTypes = {
 };
 
 NavLink.defaultProps = {
-  tag: "a"
+  tag: 'a'
 };
-
-export default NavLink;

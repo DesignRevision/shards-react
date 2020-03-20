@@ -1,34 +1,34 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const ListGroupItem = props => {
-  const {
-    className,
-    tag: Tag,
-    active,
-    action,
-    disabled,
-    theme,
-    ...attrs
-  } = props;
-
-  const classes = classNames(
-    className,
-    active && "active",
-    disabled && "disabled",
-    action && "list-group-item-action",
-    theme && `list-group-item-${theme}`,
-    "list-group-item"
-  );
-
+export const ListGroupItem = ({
+  className,
+  tag: Tag,
+  active,
+  action,
+  disabled,
+  theme,
+...attrs
+}) => {
   if (disabled) {
     attrs.onClick = e => {
       e.preventDefault();
     };
   }
 
-  return <Tag {...attrs} className={classes} />;
+  return <Tag
+    {...attrs}
+    className={
+      classNames(
+        className,
+        active && 'active',
+        disabled && 'disabled',
+        action && 'list-group-item-action',
+        theme && `list-group-item-${theme}`,
+        'list-group-item'
+      )
+    }/>;
 };
 
 ListGroupItem.propTypes = {
@@ -55,11 +55,9 @@ ListGroupItem.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 ListGroupItem.defaultProps = {
-  tag: "li"
+  tag: 'li'
 };
-
-export default ListGroupItem;

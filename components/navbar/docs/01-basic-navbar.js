@@ -1,23 +1,23 @@
-import React from "react";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
+  Collapse,
   Dropdown,
-  DropdownToggle,
-  DropdownMenu,
   DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  FormInput,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-  FormInput,
-  Collapse
-} from "shards-react";
+  Nav,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  NavItem,
+  NavLink
+} from 'shards-react';
 
 /**
  * ## Basic Example
@@ -57,7 +57,7 @@ export default class NavExample extends React.Component {
     return (
       <Navbar type="dark" theme="primary" expand="md">
         <NavbarBrand href="#">Shards React</NavbarBrand>
-        <NavbarToggler onClick={this.toggleNavbar} />
+        <NavbarToggler onClick={this.toggleNavbar}/>
 
         <Collapse open={this.state.collapseOpen} navbar>
           <Nav navbar>
@@ -90,10 +90,10 @@ export default class NavExample extends React.Component {
             <InputGroup size="sm" seamless>
               <InputGroupAddon type="prepend">
                 <InputGroupText>
-                  <FontAwesomeIcon icon={faSearch} />
+                  <FontAwesomeIcon icon={faSearch}/>
                 </InputGroupText>
               </InputGroupAddon>
-              <FormInput className="border-0" placeholder="Search..." />
+              <FormInput className="border-0" placeholder="Search..."/>
             </InputGroup>
           </Nav>
         </Collapse>

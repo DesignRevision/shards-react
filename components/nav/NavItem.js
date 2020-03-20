@@ -1,18 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const NavItem = props => {
-  const { className, active, disabled, tag: Tag, ...attrs } = props;
-  const classes = classNames(
-    className,
-    "nav-item",
-    active && "active",
-    disabled && "disabled"
-  );
-
-  return <Tag {...attrs} className={classes} />;
-};
+export const NavItem = ({className, active, disabled, tag: Tag, ...attrs}) => (
+  <Tag
+    {...attrs}
+    className={
+      classNames(
+        className,
+        'nav-item',
+        active && 'active',
+        disabled && 'disabled'
+      )
+    }
+  />
+);
 
 NavItem.propTypes = {
   /**
@@ -30,11 +32,9 @@ NavItem.propTypes = {
   /**
    * The component's tag type.
    */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ])
 };
 
 NavItem.defaultProps = {
-  tag: "li"
+  tag: 'li'
 };
-
-export default NavItem;

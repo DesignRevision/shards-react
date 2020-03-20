@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Popover, PopoverBody, PopoverHeader } from "shards-react";
+import React from 'react';
+import { Button, Popover, PopoverBody, PopoverHeader } from 'shards-react';
 
 /**
  * ## Basic Example
